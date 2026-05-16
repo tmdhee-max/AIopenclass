@@ -1,8 +1,21 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js';
 
-// 빌드 시점에 환경 변수가 없을 경우를 대비해 더미 값을 기본값으로 설정합니다.
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder'
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// 유효한 URL인지 확인하는 함수
+const isValidUrl = (url: string) => {
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+// URL이 유효하지 않으면 더미 클라이언트를 반환하여 크래시를 방지합니다.
+export const supabase = (isValidUrl(supabaseUrl) && supabaseAnonKey) 
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : createClient('https://placeholder-url.supabase.co', 'placeholder-key');
+
 
