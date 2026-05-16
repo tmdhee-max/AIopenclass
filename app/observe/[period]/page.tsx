@@ -63,7 +63,7 @@ export default function ObservePeriodPage({ params }: { params: { period: string
                 <div className="w-12 h-12 mb-3 rounded-full bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-200">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
                 </div>
-                <span className="text-xl font-bold text-gray-900 dark:text-white mb-2">{cls}반</span>
+                <span className="text-xl font-bold text-gray-900 dark:text-white mb-2">{cls}</span>
                 
                 {/* 과목 및 장소 정보 표시 */}
                 <div className="flex flex-col items-center space-y-1 text-sm text-gray-500 dark:text-gray-400">
