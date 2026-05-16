@@ -32,8 +32,7 @@ export default function RootLayout({
             <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
               {/* 여기에 새로운 네비게이션 링크를 추가하세요 */}
               <Link href="/" className="hover:text-indigo-500 transition-colors">홈</Link>
-              <Link href="#" className="hover:text-indigo-500 transition-colors">학교소개</Link>
-              <Link href="#" className="hover:text-indigo-500 transition-colors">게시판</Link>
+              <Link href="https://mokpohangdo.ms.jne.kr/mokpohangdo_ms/main.do?sysId=mokpohangdo_ms" className="hover:text-indigo-500 transition-colors">학교홈페이지</Link>
             </nav>
 
             <button className="md:hidden p-2">
