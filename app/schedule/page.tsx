@@ -10,14 +10,14 @@ export default function SchedulePage() {
       color: "bg-indigo-100 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-400"
     },
     {
-      time: "2교시 (09:55 ~ 10:40)",
+      time: "09:55 ~ 10:40",
       title: "2교시 수업 참관",
       location: "각 교실",
       icon: "👩‍🏫",
       color: "bg-purple-100 text-purple-600 dark:bg-purple-900/50 dark:text-purple-400"
     },
     {
-      time: "3교시 (10:50 ~ 11:35)",
+      time: "10:50 ~ 11:35",
       title: "3교시 수업 참관",
       location: "각 교실",
       icon: "📝",
