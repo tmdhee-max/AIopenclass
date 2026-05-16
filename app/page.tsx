@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center pt-20 pb-32 px-4 sm:px-6 lg:px-8">
@@ -51,7 +53,7 @@ export default function Home() {
         </a>
 
         {/* 행사일정 배너 */}
-        <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+        <Link href="/schedule" className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 block cursor-pointer">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-white dark:from-purple-900/20 dark:to-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10 flex flex-col items-center text-center space-y-4">
             <div className="p-4 bg-purple-100 dark:bg-purple-900/50 rounded-full text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform duration-300">
@@ -60,7 +62,7 @@ export default function Home() {
             <h3 className="font-bold text-xl text-gray-900 dark:text-white">행사일정</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">행사의 세부 일정을 확인하세요.</p>
           </div>
-        </div>
+        </Link>
 
         {/* 2교시 참관 배너 */}
         <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
