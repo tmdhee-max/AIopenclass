@@ -71,8 +71,8 @@ export default function Home() {
             <div className="p-4 bg-pink-100 dark:bg-pink-900/50 rounded-full text-pink-600 dark:text-pink-400 group-hover:scale-110 transition-transform duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg>
             </div>
-            <h3 className="font-bold text-xl text-gray-900 dark:text-white">2교시 참관</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">2교시 수업 참관 안내 및 자료</p>
+            <h3 className="font-bold text-xl text-gray-900 dark:text-white">2교시 수업</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">2교시 수업 참관록 작성</p>
           </div>
         </Link>
 
