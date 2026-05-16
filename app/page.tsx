@@ -21,22 +21,6 @@ export default function Home() {
           미래를 이끄는 AI 인재 양성, <br /> 우리 아이들의 학습 현장을 직접 만나보세요.
         </p>
 
-        {/* 액션 버튼 */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="https://www.foreducator.com/registry/sign/74ad4be8-e2ef-4587-bb69-e9dee7e593ae"
-            className="w-full sm:w-auto px-8 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium shadow-lg shadow-indigo-200 dark:shadow-none transition-transform hover:scale-105 active:scale-95 text-center"
-          >
-            참여 신청하기
-          </a>
-
-          {/* 여기에 새로운 기능(예: 안내장 다운로드 등)을 위한 버튼을 추가하세요 */}
-          {/* 
-          <button className="w-full sm:w-auto px-8 py-3 rounded-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 hover:bg-gray-50 dark:hover:bg-zinc-700 text-gray-900 dark:text-gray-100 font-medium transition-transform hover:scale-105 active:scale-95">
-            안내장 다운로드
-          </button> 
-          */}
-        </div>
       </section>
 
       {/* 바로가기 배너 섹션 */}
