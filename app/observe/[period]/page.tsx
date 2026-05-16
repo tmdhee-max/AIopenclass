@@ -19,14 +19,13 @@ export default function ObservePeriodPage({ params }: { params: { period: string
       "3-3": { subject: "과학", location: "3-3교실" },
     },
     "3": {
-      // 3교시는 아직 정보가 없으므로 준비 중으로 표시
-      "1-1": { subject: "준비 중", location: "각 교실" },
-      "1-2": { subject: "준비 중", location: "각 교실" },
-      "2-1": { subject: "준비 중", location: "각 교실" },
-      "2-2": { subject: "준비 중", location: "각 교실" },
-      "3-1": { subject: "준비 중", location: "각 교실" },
-      "3-2": { subject: "준비 중", location: "각 교실" },
-      "3-3": { subject: "준비 중", location: "각 교실" },
+      "1-1": { subject: "기가", location: "1-1교실" },
+      "1-2": { subject: "도덕", location: "1-2교실" },
+      "2-1": { subject: "국어", location: "도서관" },
+      "2-2": { subject: "체육", location: "AI실" },
+      "3-1": { subject: "국어", location: "3-1교실" },
+      "3-2": { subject: "미술", location: "3-2교실" },
+      "3-3": { subject: "영어", location: "3-3교실" },
     }
   };
 
