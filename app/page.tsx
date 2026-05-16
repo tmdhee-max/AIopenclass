@@ -64,7 +64,7 @@ export default function Home() {
           </div>
         </Link>
 
-        {/* 2교시 수업 배너 - Force Redeploy Comment */}
+        {/* 2교시 참관 배너 */}
         <Link href="/observe/2" className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 block cursor-pointer">
           <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-white dark:from-pink-900/20 dark:to-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10 flex flex-col items-center text-center space-y-4">
@@ -72,7 +72,7 @@ export default function Home() {
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg>
             </div>
             <h3 className="font-bold text-xl text-gray-900 dark:text-white">2교시 수업</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">2교시 수업 참관록 작성</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">수업 참관록 작성</p>
           </div>
         </Link>
 
@@ -84,7 +84,7 @@ export default function Home() {
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
             </div>
             <h3 className="font-bold text-xl text-gray-900 dark:text-white">3교시 수업</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">수업 참관록 작성</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">3교시 수업 참관록 작성</p>
           </div>
         </Link>
 
