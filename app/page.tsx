@@ -18,7 +18,7 @@ export default function Home() {
 
         {/* 서브 설명 */}
         <p className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-          미래를 이끄는 AI 인재 양성, 목포항도여자중학교에서 우리 아이들의 혁신적인 학습 현장을 직접 만나보세요.
+          미래를 이끄는 AI 인재 양성, <br /> 우리 아이들의 학습 현장을 직접 만나보세요.
         </p>
 
         {/* 액션 버튼 */}
