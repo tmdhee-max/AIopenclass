@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 export default function ObserveFormPage({ params }: { params: { period: string, classId: string } }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -11,24 +12,31 @@ export default function ObserveFormPage({ params }: { params: { period: string, 
     e.preventDefault();
     setIsSubmitting(true);
 
-    // 실제 서비스(Supabase 등) 연동 시의 예시 코드입니다.
-    /*
-    const formData = new FormData(e.target as HTMLFormElement);
-    const { data, error } = await supabase.from('observations').insert([{
-      period: params.period,
-      classId: decodeURIComponent(params.classId),
-      parentName: formData.get('parentName'),
-      studentName: formData.get('studentName'),
-      feedback: formData.get('feedback'),
-      createdAt: new Date().toISOString()
-    }]);
-    */
+    try {
+      const formData = new FormData(e.target as HTMLFormElement);
+      const { error } = await supabase.from('observations').insert([{
+        period: params.period,
+        class_id: decodeURIComponent(params.classId),
+        parent_name: formData.get('parentName'),
+        student_name: formData.get('studentName'),
+        feedback: formData.get('feedback'),
+        created_at: new Date().toISOString()
+      }]);
 
-    // 서버 전송 시뮬레이션 (1초 대기)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      if (error) {
+        console.error('Error saving to Supabase:', error);
+        alert('저장 중 오류가 발생했습니다. 다시 시도해 주세요.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error('Submission error:', err);
+      alert('연결 오류가 발생했습니다.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {

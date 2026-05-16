@@ -1,18 +1,70 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
-import { mockObservations, Observation } from "@/lib/mock-data";
+import { Observation } from "@/lib/mock-data";
+import { supabase } from "@/lib/supabase";
 
 export default function AdminPage() {
-  const [observations, setObservations] = useState<Observation[]>(mockObservations);
+  const [observations, setObservations] = useState<Observation[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [periodFilter, setPeriodFilter] = useState("all");
 
-  const handleDelete = (id: string) => {
+  // 마운트 확인 (Hydration 오류 방지)
+  useEffect(() => {
+    setIsMounted(true);
+    fetchObservations();
+  }, []);
+
+  if (!isMounted) return null;
+
+  const fetchObservations = async () => {
+    setIsLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('observations')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+
+      // DB의 snake_case를 UI의 camelCase로 변환
+      const formattedData: Observation[] = (data || []).map(item => ({
+        id: item.id,
+        createdAt: item.created_at,
+        period: item.period,
+        classId: item.class_id,
+        parentName: item.parent_name,
+        studentName: item.student_name,
+        feedback: item.feedback
+      }));
+
+      setObservations(formattedData);
+    } catch (err) {
+      console.error('Error fetching data:', err);
+      alert('데이터를 불러오는데 실패했습니다.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleDelete = async (id: string) => {
     if (window.confirm("정말로 이 참관록을 삭제하시겠습니까?")) {
-      setObservations(prev => prev.filter(item => item.id !== id));
-      // 실제 DB 연동 시에는 여기서 삭제 API를 호출합니다.
+      try {
+        const { error } = await supabase
+          .from('observations')
+          .delete()
+          .eq('id', id);
+
+        if (error) throw error;
+        
+        setObservations(prev => prev.filter(item => item.id !== id));
+      } catch (err) {
+        console.error('Error deleting:', err);
+        alert('삭제 중 오류가 발생했습니다.');
+      }
     }
   };
 
@@ -20,9 +72,9 @@ export default function AdminPage() {
   const filteredData = useMemo(() => {
     return observations.filter((item) => {
       const matchesSearch = 
-        item.parentName.includes(searchTerm) || 
-        item.studentName.includes(searchTerm) || 
-        item.feedback.includes(searchTerm);
+        item.parentName.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        item.studentName.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        item.feedback.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesPeriod = periodFilter === "all" || item.period === periodFilter;
       return matchesSearch && matchesPeriod;
     }).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
@@ -146,49 +198,62 @@ export default function AdminPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-zinc-800">
-                {filteredData.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50/50 dark:hover:bg-zinc-800/30 transition-colors">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center space-x-2">
-                        <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                          item.period === "2" ? "bg-pink-100 text-pink-700" : "bg-emerald-100 text-emerald-700"
-                        }`}>
-                          {item.period}P
-                        </span>
-                        <span className="font-bold text-gray-900 dark:text-white">{item.classId}</span>
+                {isLoading ? (
+                  <tr>
+                    <td colSpan={5} className="px-6 py-20 text-center">
+                      <div className="flex flex-col items-center justify-center space-y-3">
+                        <svg className="animate-spin h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">데이터를 불러오는 중입니다...</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900 dark:text-white">{item.parentName}</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">{item.studentName}의 보호자</div>
-                    </td>
-                    <td className="px-6 py-4">
-                      <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 max-w-md">
-                        {item.feedback}
-                      </p>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                      {new Date(item.createdAt).toLocaleString('ko-KR', { 
-                        month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' 
-                      })}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <button 
-                        onClick={() => handleDelete(item.id)}
-                        className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-                        title="삭제"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
-                      </button>
-                    </td>
                   </tr>
-                ))}
-                {filteredData.length === 0 && (
+                ) : filteredData.length === 0 ? (
                   <tr>
                     <td colSpan={5} className="px-6 py-20 text-center text-gray-500 dark:text-gray-400">
-                      데이터가 없습니다.
+                      검색 결과가 없습니다.
                     </td>
                   </tr>
+                ) : (
+                  filteredData.map((item) => (
+                    <tr key={item.id} className="hover:bg-gray-50/50 dark:hover:bg-zinc-800/30 transition-colors">
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center space-x-2">
+                          <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+                            item.period === "2" ? "bg-pink-100 text-pink-700" : "bg-emerald-100 text-emerald-700"
+                          }`}>
+                            {item.period}P
+                          </span>
+                          <span className="font-bold text-gray-900 dark:text-white">{item.classId}</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm font-medium text-gray-900 dark:text-white">{item.parentName}</div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400">{item.studentName}의 보호자</div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 max-w-md">
+                          {item.feedback}
+                        </p>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 text-right">
+                        {new Date(item.createdAt).toLocaleString('ko-KR', { 
+                          month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' 
+                        })}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button 
+                          onClick={() => handleDelete(item.id)}
+                          className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                          title="삭제"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                        </button>
+                      </td>
+                    </tr>
+                  ))
                 )}
               </tbody>
             </table>
