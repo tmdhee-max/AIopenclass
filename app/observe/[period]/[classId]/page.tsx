@@ -53,7 +53,7 @@ export default function ObserveFormPage({ params }: { params: { period: string, 
             </span>
           </div>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            해당 학급의 수업을 참관하신 후 소감 및 건의사항을 작성해주세요.
+            해당 학급의 수업을 참관하신 후 소감을 작성해주세요.
           </p>
         </div>
 
