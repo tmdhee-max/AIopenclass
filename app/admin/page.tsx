@@ -5,12 +5,20 @@ import Link from "next/link";
 import { mockObservations, Observation } from "@/lib/mock-data";
 
 export default function AdminPage() {
+  const [observations, setObservations] = useState<Observation[]>(mockObservations);
   const [searchTerm, setSearchTerm] = useState("");
   const [periodFilter, setPeriodFilter] = useState("all");
 
+  const handleDelete = (id: string) => {
+    if (window.confirm("정말로 이 참관록을 삭제하시겠습니까?")) {
+      setObservations(prev => prev.filter(item => item.id !== id));
+      // 실제 DB 연동 시에는 여기서 삭제 API를 호출합니다.
+    }
+  };
+
   // 데이터 필터링 로직
   const filteredData = useMemo(() => {
-    return mockObservations.filter((item) => {
+    return observations.filter((item) => {
       const matchesSearch = 
         item.parentName.includes(searchTerm) || 
         item.studentName.includes(searchTerm) || 
@@ -18,13 +26,13 @@ export default function AdminPage() {
       const matchesPeriod = periodFilter === "all" || item.period === periodFilter;
       return matchesSearch && matchesPeriod;
     }).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-  }, [searchTerm, periodFilter]);
+  }, [observations, searchTerm, periodFilter]);
 
   // 통계 계산
   const stats = {
-    total: mockObservations.length,
-    period2: mockObservations.filter(i => i.period === "2").length,
-    period3: mockObservations.filter(i => i.period === "3").length,
+    total: observations.length,
+    period2: observations.filter(i => i.period === "2").length,
+    period3: observations.filter(i => i.period === "3").length,
   };
 
   const downloadCSV = () => {
@@ -134,7 +142,7 @@ export default function AdminPage() {
                   <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">교시/학급</th>
                   <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">학부모/학생</th>
                   <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">참관 소감</th>
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">제출 일시</th>
+                  <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider text-right">관리</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-zinc-800">
@@ -164,11 +172,20 @@ export default function AdminPage() {
                         month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' 
                       })}
                     </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <button 
+                        onClick={() => handleDelete(item.id)}
+                        className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                        title="삭제"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                      </button>
+                    </td>
                   </tr>
                 ))}
                 {filteredData.length === 0 && (
                   <tr>
-                    <td colSpan={4} className="px-6 py-20 text-center text-gray-500 dark:text-gray-400">
+                    <td colSpan={5} className="px-6 py-20 text-center text-gray-500 dark:text-gray-400">
                       데이터가 없습니다.
                     </td>
                   </tr>
