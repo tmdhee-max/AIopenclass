@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Observation } from "@/lib/mock-data";
 import { supabase } from "@/lib/supabase";
 
+export const dynamic = 'force-dynamic';
+
 export default function AdminPage() {
   const [observations, setObservations] = useState<Observation[]>([]);
   const [isLoading, setIsLoading] = useState(true);
