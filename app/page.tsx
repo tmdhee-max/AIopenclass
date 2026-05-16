@@ -46,7 +46,7 @@ export default function Home() {
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><line x1="19" x2="19" y1="8" y2="14" /><line x1="22" x2="16" y1="11" y2="11" /></svg>
             </div>
             <h3 className="font-bold text-xl text-gray-900 dark:text-white">등록하기</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">참여를 원하시면 먼저 등록해주세요.</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">방문 등록이 필요합니다.</p>
           </div>
         </a>
 
