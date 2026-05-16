@@ -28,15 +28,15 @@ export default function AdminDashboard() {
 
       if (error) throw error;
 
-      // DB의 snake_case를 UI의 camelCase로 변환
-      const formattedData: Observation[] = (data || []).map(item => ({
-        id: item.id,
-        createdAt: item.created_at,
-        period: item.period,
-        classId: item.class_id,
-        parentName: item.parent_name,
-        studentName: item.student_name,
-        feedback: item.feedback
+      // DB의 snake_case를 UI의 camelCase로 변환 (타입 안전성 보강)
+      const formattedData: Observation[] = (data as any[] || []).map(item => ({
+        id: item.id || '',
+        createdAt: item.created_at || new Date().toISOString(),
+        period: item.period || '',
+        classId: item.class_id || '',
+        parentName: item.parent_name || '',
+        studentName: item.student_name || '',
+        feedback: item.feedback || ''
       }));
 
       setObservations(formattedData);

@@ -21,11 +21,11 @@ export default function ObserveForm({ params }: { params: { period: string, clas
         student_name: formData.get('studentName'),
         feedback: formData.get('feedback'),
         created_at: new Date().toISOString()
-      }]);
+      }] as any[]);
 
       if (error) {
         console.error('Error saving to Supabase:', error);
-        alert('저장 중 오류가 발생했습니다. 다시 시도해 주세요.');
+        alert(`저장 실패: ${error.message}\n(상세: ${error.details || '없음'})`);
         setIsSubmitting(false);
         return;
       }
