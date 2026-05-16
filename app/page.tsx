@@ -12,9 +12,8 @@ export default function Home() {
           목포항도여자중학교
         </div>
 
-        {/* 메인 타이틀 */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 pb-2">
-          AI 중점학교 학부모 공개의 날
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 pb-2 leading-tight">
+          AI 중점학교 <br /> 학부모 공개의 날
         </h1>
 
         {/* 서브 설명 */}
