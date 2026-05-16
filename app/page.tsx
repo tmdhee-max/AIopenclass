@@ -39,7 +39,7 @@ export default function Home() {
       <section className="w-full max-w-5xl mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 fill-mode-both">
         
         {/* 등록하기 배너 */}
-        <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+        <a href="https://www.foreducator.com/registry/sign/74ad4be8-e2ef-4587-bb69-e9dee7e593ae" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer block">
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-900/20 dark:to-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10 flex flex-col items-center text-center space-y-4">
             <div className="p-4 bg-indigo-100 dark:bg-indigo-900/50 rounded-full text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-300">
@@ -48,7 +48,7 @@ export default function Home() {
             <h3 className="font-bold text-xl text-gray-900 dark:text-white">등록하기</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">참여를 원하시면 먼저 등록해주세요.</p>
           </div>
-        </div>
+        </a>
 
         {/* 행사일정 배너 */}
         <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
