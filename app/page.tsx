@@ -24,9 +24,12 @@ export default function Home() {
 
         {/* 액션 버튼 */}
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="w-full sm:w-auto px-8 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium shadow-lg shadow-indigo-200 dark:shadow-none transition-transform hover:scale-105 active:scale-95">
+          <a 
+            href="https://www.foreducator.com/registry/sign/74ad4be8-e2ef-4587-bb69-e9dee7e593ae"
+            className="w-full sm:w-auto px-8 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium shadow-lg shadow-indigo-200 dark:shadow-none transition-transform hover:scale-105 active:scale-95 text-center"
+          >
             참여 신청하기
-          </button>
+          </a>
 
           {/* 여기에 새로운 기능(예: 안내장 다운로드 등)을 위한 버튼을 추가하세요 */}
           {/* 
@@ -41,7 +44,7 @@ export default function Home() {
       <section className="w-full max-w-5xl mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 fill-mode-both">
 
         {/* 등록하기 배너 */}
-        <a href="https://www.foreducator.com/registry/sign/74ad4be8-e2ef-4587-bb69-e9dee7e593ae" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer block">
+        <a href="https://www.foreducator.com/registry/sign/74ad4be8-e2ef-4587-bb69-e9dee7e593ae" className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer block">
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-900/20 dark:to-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10 flex flex-col items-center text-center space-y-4">
             <div className="p-4 bg-indigo-100 dark:bg-indigo-900/50 rounded-full text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-300">
