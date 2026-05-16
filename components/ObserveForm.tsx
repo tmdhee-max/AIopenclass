@@ -25,7 +25,7 @@ export default function ObserveForm({ params }: { params: { period: string, clas
 
       if (error) {
         console.error('Error saving to Supabase:', error);
-        alert(`저장 실패: ${error.message}\n(상세: ${error.details || '없음'})`);
+        alert(`저장 중 오류가 발생했습니다: ${error.message}`);
         setIsSubmitting(false);
         return;
       }
