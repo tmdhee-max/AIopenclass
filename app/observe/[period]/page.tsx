@@ -46,7 +46,7 @@ export default function ObservePeriodPage({ params }: { params: { period: string
             {params.period}교시 참관 학급 선택
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            참관하실 학급을 선택해주세요. 각 학급의 수업 정보가 표시됩니다.
+            학급을 선택하여 참관록을 작성해주세요.
           </p>
         </div>
 
