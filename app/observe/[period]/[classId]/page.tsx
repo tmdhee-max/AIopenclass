@@ -5,10 +5,29 @@ import { useState } from "react";
 
 export default function ObserveFormPage({ params }: { params: { period: string, classId: string } }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 실제 서비스에서는 여기서 API 호출 및 데이터베이스 저장이 이루어집니다.
+    setIsSubmitting(true);
+
+    // 실제 서비스(Supabase 등) 연동 시의 예시 코드입니다.
+    /*
+    const formData = new FormData(e.target as HTMLFormElement);
+    const { data, error } = await supabase.from('observations').insert([{
+      period: params.period,
+      classId: decodeURIComponent(params.classId),
+      parentName: formData.get('parentName'),
+      studentName: formData.get('studentName'),
+      feedback: formData.get('feedback'),
+      createdAt: new Date().toISOString()
+    }]);
+    */
+
+    // 서버 전송 시뮬레이션 (1초 대기)
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    setIsSubmitting(false);
     setIsSubmitted(true);
   };
 
@@ -83,8 +102,22 @@ export default function ObserveFormPage({ params }: { params: { period: string, 
             <textarea id="feedback" required rows={6} className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all resize-none" placeholder="수업 참관 후 느끼신 점을 자유롭게 작성해주세요."></textarea>
           </div>
 
-          <button type="submit" className="w-full py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-lg shadow-md transition-all hover:shadow-lg active:scale-[0.98]">
-            참관록 제출하기
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            className={`w-full py-4 rounded-xl font-bold text-lg shadow-md transition-all hover:shadow-lg active:scale-[0.98] flex items-center justify-center ${
+              isSubmitting ? "bg-indigo-400 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700 text-white"
+            }`}
+          >
+            {isSubmitting ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                제출 중...
+              </>
+            ) : "참관록 제출하기"}
           </button>
 
         </form>
