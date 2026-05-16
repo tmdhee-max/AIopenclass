@@ -16,7 +16,7 @@ export default function Header() {
               항도
             </div>
             <span className="font-semibold text-lg tracking-tight truncate max-w-[180px] sm:max-w-none">
-              목포항도여자중학교
+              진로연계학교자율시간연구학교
             </span>
           </Link>
 
