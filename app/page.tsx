@@ -64,7 +64,7 @@ export default function Home() {
           </div>
         </Link>
 
-        {/* 2교시 참관 배너 */}
+        {/* 2교시 수업 배너 - Force Redeploy Comment */}
         <Link href="/observe/2" className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 block cursor-pointer">
           <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-white dark:from-pink-900/20 dark:to-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10 flex flex-col items-center text-center space-y-4">
