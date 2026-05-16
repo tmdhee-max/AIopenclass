@@ -84,7 +84,7 @@ export default function Home() {
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
             </div>
             <h3 className="font-bold text-xl text-gray-900 dark:text-white">3교시 수업</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">3교시 수업 참관록 작성</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">수업 참관록 작성</p>
           </div>
         </Link>
 
