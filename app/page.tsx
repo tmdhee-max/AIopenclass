@@ -65,7 +65,7 @@ export default function Home() {
         </Link>
 
         {/* 2교시 참관 배너 */}
-        <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+        <Link href="/observe/2" className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 block cursor-pointer">
           <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-white dark:from-pink-900/20 dark:to-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10 flex flex-col items-center text-center space-y-4">
             <div className="p-4 bg-pink-100 dark:bg-pink-900/50 rounded-full text-pink-600 dark:text-pink-400 group-hover:scale-110 transition-transform duration-300">
@@ -74,10 +74,10 @@ export default function Home() {
             <h3 className="font-bold text-xl text-gray-900 dark:text-white">2교시 참관</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">2교시 수업 참관 안내 및 자료</p>
           </div>
-        </div>
+        </Link>
 
         {/* 3교시 참관 배너 */}
-        <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+        <Link href="/observe/3" className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 block cursor-pointer">
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/20 dark:to-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10 flex flex-col items-center text-center space-y-4">
             <div className="p-4 bg-emerald-100 dark:bg-emerald-900/50 rounded-full text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300">
@@ -86,7 +86,7 @@ export default function Home() {
             <h3 className="font-bold text-xl text-gray-900 dark:text-white">3교시 참관</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">3교시 수업 참관 안내 및 자료</p>
           </div>
-        </div>
+        </Link>
 
       </section>
 
