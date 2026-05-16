@@ -9,7 +9,7 @@ export default function Home() {
         {/* 뱃지 */}
         <div className="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-50/50 dark:bg-indigo-900/30 dark:border-indigo-800 px-3 py-1 text-sm font-medium text-indigo-600 dark:text-indigo-400">
           <span className="flex h-2 w-2 rounded-full bg-indigo-600 mr-2 animate-pulse"></span>
-          진로연계학교자율시간연구학교
+          목포항도여자중학교
         </div>
 
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 pb-2 leading-tight">
