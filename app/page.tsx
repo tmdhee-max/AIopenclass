@@ -35,9 +35,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 여기에 추가적인 섹션(예: 행사 일정, 갤러리 등) 컴포넌트를 추가하세요 */}
-      {/* <ScheduleSection /> */}
-      {/* <GallerySection /> */}
+      {/* 바로가기 배너 섹션 */}
+      <section className="w-full max-w-5xl mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 fill-mode-both">
+        
+        {/* 등록하기 배너 */}
+        <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-900/20 dark:to-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+            <div className="p-4 bg-indigo-100 dark:bg-indigo-900/50 rounded-full text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+            </div>
+            <h3 className="font-bold text-xl text-gray-900 dark:text-white">등록하기</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">참여를 원하시면 먼저 등록해주세요.</p>
+          </div>
+        </div>
+
+        {/* 행사일정 배너 */}
+        <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-white dark:from-purple-900/20 dark:to-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+            <div className="p-4 bg-purple-100 dark:bg-purple-900/50 rounded-full text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+            </div>
+            <h3 className="font-bold text-xl text-gray-900 dark:text-white">행사일정</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">행사의 세부 일정을 확인하세요.</p>
+          </div>
+        </div>
+
+        {/* 2교시 참관 배너 */}
+        <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+          <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-white dark:from-pink-900/20 dark:to-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+            <div className="p-4 bg-pink-100 dark:bg-pink-900/50 rounded-full text-pink-600 dark:text-pink-400 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3 className="font-bold text-xl text-gray-900 dark:text-white">2교시 참관</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">2교시 수업 참관 안내 및 자료</p>
+          </div>
+        </div>
+
+        {/* 3교시 참관 배너 */}
+        <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/20 dark:to-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+            <div className="p-4 bg-emerald-100 dark:bg-emerald-900/50 rounded-full text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <h3 className="font-bold text-xl text-gray-900 dark:text-white">3교시 참관</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">3교시 수업 참관 안내 및 자료</p>
+          </div>
+        </div>
+
+      </section>
       
     </div>
   );
