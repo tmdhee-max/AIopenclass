@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -30,9 +31,9 @@ export default function RootLayout({
 
             <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
               {/* 여기에 새로운 네비게이션 링크를 추가하세요 */}
-              <a href="#" className="hover:text-indigo-500 transition-colors">홈</a>
-              <a href="#" className="hover:text-indigo-500 transition-colors">학교소개</a>
-              <a href="#" className="hover:text-indigo-500 transition-colors">게시판</a>
+              <Link href="/" className="hover:text-indigo-500 transition-colors">홈</Link>
+              <Link href="#" className="hover:text-indigo-500 transition-colors">학교소개</Link>
+              <Link href="#" className="hover:text-indigo-500 transition-colors">게시판</Link>
             </nav>
 
             <button className="md:hidden p-2">
