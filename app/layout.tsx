@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: "학부모 공개의 날 웹 서비스",
 };
 
+import Header from "@/components/Header";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -18,29 +20,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={inter.className}>
-        {/* 상단 헤더 */}
-        <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 dark:bg-black/70 border-b border-gray-200 dark:border-gray-800 transition-colors">
-          <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-            <div className="flex items-center space-x-2 cursor-pointer">
-              {/* 로고 영역 */}
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-                항도
-              </div>
-              <span className="font-semibold text-lg tracking-tight">목포항도여자중학교</span>
-            </div>
-
-            <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-              {/* 여기에 새로운 네비게이션 링크를 추가하세요 */}
-              <Link href="/" className="hover:text-indigo-500 transition-colors">홈</Link>
-              <Link href="https://mokpohangdo.ms.jne.kr/mokpohangdo_ms/main.do?sysId=mokpohangdo_ms" className="hover:text-indigo-500 transition-colors">학교홈페이지</Link>
-            </nav>
-
-            <button className="md:hidden p-2">
-              {/* 모바일 햄버거 메뉴 아이콘 (추후 구현) */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /></svg>
-            </button>
-          </div>
-        </header>
+        <Header />
 
         {/* 메인 콘텐츠 영역 */}
         <main className="min-h-screen">
