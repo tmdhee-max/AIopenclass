@@ -78,9 +78,9 @@ export default function ObserveFormPage({ params }: { params: { period: string, 
 
           <div className="space-y-2">
             <label htmlFor="feedback" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              참관 소감 및 건의사항 <span className="text-red-500">*</span>
+              참관 소감 <span className="text-red-500">*</span>
             </label>
-            <textarea id="feedback" required rows={6} className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all resize-none" placeholder="수업 참관 후 느끼신 점이나 학교에 건의하고 싶으신 내용을 자유롭게 작성해주세요."></textarea>
+            <textarea id="feedback" required rows={6} className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all resize-none" placeholder="수업 참관 후 느끼신 점을 자유롭게 작성해주세요."></textarea>
           </div>
 
           <button type="submit" className="w-full py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-lg shadow-md transition-all hover:shadow-lg active:scale-[0.98]">
