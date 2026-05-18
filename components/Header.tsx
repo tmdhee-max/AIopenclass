@@ -23,8 +23,8 @@ export default function Header() {
           {/* 데스크탑 네비게이션 */}
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
             <Link href="/" className="hover:text-indigo-500 transition-colors">홈</Link>
-            <Link 
-              href="https://mokpohangdo.ms.jne.kr/mokpohangdo_ms/main.do?sysId=mokpohangdo_ms" 
+            <Link
+              href="https://mokpohangdo.ms.jne.kr/mokpohangdo_ms/main.do?sysId=mokpohangdo_ms"
               className="hover:text-indigo-500 transition-colors"
             >
               학교홈페이지
@@ -32,7 +32,7 @@ export default function Header() {
           </nav>
 
           {/* 모바일 메뉴 버튼 */}
-          <button 
+          <button
             className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-lg transition-colors focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
@@ -50,15 +50,15 @@ export default function Header() {
       {isMenuOpen && (
         <div className="md:hidden animate-in slide-in-from-top duration-300">
           <div className="px-4 pt-2 pb-6 space-y-1 bg-white dark:bg-zinc-950 border-b border-gray-100 dark:border-zinc-800 shadow-xl">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="block px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               홈
             </Link>
-            <Link 
-              href="https://mokpohangdo.ms.jne.kr/mokpohangdo_ms/main.do?sysId=mokpohangdo_ms" 
+            <Link
+              href="https://mokpohangdo.ms.jne.kr/mokpohangdo_ms/main.do?sysId=mokpohangdo_ms"
               className="block px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -67,22 +67,22 @@ export default function Header() {
             <div className="pt-2 pb-1 px-4 text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider">
               빠른 메뉴
             </div>
-            <Link 
-              href="/schedule" 
+            <Link
+              href="/schedule"
               className="block px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               행사일정
             </Link>
-            <Link 
-              href="/observe/2" 
+            <Link
+              href="/observe/2"
               className="block px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               2교시 수업
             </Link>
-            <Link 
-              href="/observe/3" 
+            <Link
+              href="/observe/3"
               className="block px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
