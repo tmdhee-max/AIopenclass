@@ -3,10 +3,14 @@
 import Link from "next/link";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
+import { scheduleData } from "@/lib/scheduleData";
 
 export default function ObserveForm({ params }: { params: { period: string, classId: string } }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const decodedClassId = decodeURIComponent(params.classId);
+  const classInfo = scheduleData[params.period]?.[decodedClassId];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,7 +20,7 @@ export default function ObserveForm({ params }: { params: { period: string, clas
       const formData = new FormData(e.target as HTMLFormElement);
       const { error } = await supabase.from('observations').insert([{
         period: params.period,
-        class_id: decodeURIComponent(params.classId),
+        class_id: decodedClassId,
         parent_name: formData.get('parentName'),
         student_name: formData.get('studentName'),
         feedback: formData.get('feedback'),
@@ -48,7 +52,7 @@ export default function ObserveForm({ params }: { params: { period: string, clas
           </div>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">제출 완료!</h2>
           <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-            {params.period}교시 {decodeURIComponent(params.classId)}반 참관록이 성공적으로 제출되었습니다.
+            {params.period}교시 {decodedClassId}반 참관록이 성공적으로 제출되었습니다.
             <br/>귀중한 의견 감사드립니다.
           </p>
           <div className="pt-8">
@@ -72,13 +76,34 @@ export default function ObserveForm({ params }: { params: { period: string, clas
           </Link>
           <div>
             <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              {params.period}교시 {decodeURIComponent(params.classId)}반 수업 참관록
+              {params.period}교시 {decodedClassId}반 수업 참관록
             </h1>
             <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
               해당 학급의 수업을 참관하신 후 소감을 작성해주세요.
             </p>
           </div>
         </div>
+
+        {/* 과목 및 주제 정보 카드 */}
+        {classInfo && (
+          <div className="bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5 dark:from-indigo-500/10 dark:via-purple-500/10 dark:to-pink-500/10 border border-indigo-100/50 dark:border-indigo-900/30 rounded-3xl p-6 sm:p-8 space-y-4 shadow-sm animate-in fade-in duration-700">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="px-3.5 py-1 text-sm font-semibold rounded-full bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900/50">
+                과목: {classInfo.subject}
+              </span>
+              <span className="flex items-center text-sm text-gray-600 dark:text-gray-400 bg-white/80 dark:bg-zinc-900/80 px-3.5 py-1 rounded-full border border-gray-100 dark:border-zinc-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1.5 text-gray-400"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                장소: {classInfo.location}
+              </span>
+            </div>
+            <div className="space-y-1.5">
+              <div className="text-xs font-bold text-indigo-500 dark:text-indigo-400 uppercase tracking-wider">수업 주제</div>
+              <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900 dark:text-white leading-tight">
+                {classInfo.topic}
+              </h2>
+            </div>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-sm mt-8 space-y-6">
           

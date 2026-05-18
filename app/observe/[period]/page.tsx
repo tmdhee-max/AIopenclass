@@ -1,33 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { scheduleData } from "@/lib/scheduleData";
 
 export default function ObservePeriodPage({ params }: { params: { period: string } }) {
   // 2교시, 3교시만 허용
   if (params.period !== "2" && params.period !== "3") {
     notFound();
   }
-
-  // 학급별 데이터 정의 (2교시, 3교시)
-  const scheduleData: Record<string, Record<string, { subject: string; location: string }>> = {
-    "2": {
-      "1-1": { subject: "보건", location: "1-1교실" },
-      "1-2": { subject: "과학", location: "1-2교실" },
-      "2-1": { subject: "수학", location: "2-1교실" },
-      "2-2": { subject: "영어", location: "영어실" },
-      "3-1": { subject: "사회", location: "3-1교실" },
-      "3-2": { subject: "수학", location: "AI실" },
-      "3-3": { subject: "과학", location: "3-3교실" },
-    },
-    "3": {
-      "1-1": { subject: "기가", location: "1-1교실" },
-      "1-2": { subject: "도덕", location: "1-2교실" },
-      "2-1": { subject: "국어", location: "도서관" },
-      "2-2": { subject: "체육", location: "AI실" },
-      "3-1": { subject: "국어", location: "3-1교실" },
-      "3-2": { subject: "미술", location: "3-2교실" },
-      "3-3": { subject: "영어", location: "3-3교실" },
-    }
-  };
 
   const classes = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2", "3-3"];
   const currentSchedule = scheduleData[params.period];
